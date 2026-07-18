@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+
+  # ---------------------------------------------------------------
+  # پایگاه داده PostgreSQL
+  # ---------------------------------------------------------------
+  db:
+    image: postgres:16-alpine
+    container_name: hotel_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-hotel_db}
+      POSTGRES_USER: ${POSTGRES_USER:-hotel_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hotel_pass123}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - hotel_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hotel_user} -d ${POSTGRES_DB:-hotel_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ---------------------------------------------------------------
+  # خود برنامه گرافیکی (اختیاری - فقط روی لینوکس با X11 به‌راحتی کار می‌کند)
+  # برای اجرا: docker compose --profile gui up
+  # روی ویندوز/مک ابتدا بخش «راه‌اندازی X11» در README-DOCKER.md را بخوانید.
+  # ---------------------------------------------------------------
+  app:
+    build: .
+    container_name: hotel_app
+    profiles: ["gui"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      HOTEL_DB_URL: postgresql+psycopg2://${POSTGRES_USER:-hotel_user}:${POSTGRES_PASSWORD:-hotel_pass123}@db:5432/${POSTGRES_DB:-hotel_db}
+      DISPLAY: ${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    network_mode: host   # ساده‌ترین حالت برای دسترسی به X11 روی لینوکس
+
+volumes:
+  hotel_db_data:

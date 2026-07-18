@@ -1,0 +1,448 @@
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+
+/* Body */
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:#0f172a;
+
+}
+
+
+/* Background */
+
+.background{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+}
+
+
+/* Animated circles */
+
+.circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(10px);
+
+    animation:move 8s infinite alternate;
+
+}
+
+
+.circle.one{
+
+    width:300px;
+
+    height:300px;
+
+    background:#2563eb;
+
+    top:-100px;
+
+    left:-100px;
+
+}
+
+
+.circle.two{
+
+    width:350px;
+
+    height:350px;
+
+    background:#9333ea;
+
+    bottom:-120px;
+
+    right:-100px;
+
+    animation-delay:2s;
+
+}
+
+
+
+@keyframes move{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+
+    to{
+
+        transform:translateY(50px);
+
+    }
+
+}
+
+
+
+/* Container */
+
+.container{
+
+    position:relative;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+/* Login Card */
+
+.card{
+
+    width:380px;
+
+    padding:40px;
+
+    background:rgba(255,255,255,0.12);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:20px;
+
+    box-shadow:0 25px 45px rgba(0,0,0,0.3);
+
+    color:white;
+
+    animation:show .8s ease;
+
+}
+
+
+
+@keyframes show{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+.card h1{
+
+    text-align:center;
+
+    font-size:32px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.card p{
+
+    text-align:center;
+
+    color:#ddd;
+
+    margin-bottom:30px;
+
+}
+
+
+
+/* Input */
+
+.input-box{
+
+    position:relative;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.input-box input{
+
+    width:100%;
+
+    padding:14px 45px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,0.15);
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+
+
+.input-box input::placeholder{
+
+    color:#ddd;
+
+}
+
+
+
+.input-box i{
+
+    position:absolute;
+
+    left:15px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:white;
+
+}
+
+
+
+.input-box .eye{
+
+    left:auto;
+
+    right:15px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* Remember */
+
+.remember{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    font-size:14px;
+
+    margin-bottom:25px;
+
+}
+
+
+.remember a{
+
+    color:#fff;
+
+    text-decoration:none;
+
+}
+
+
+.remember a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+
+/* Button */
+
+.login-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.login-btn:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-3px);
+
+}
+
+
+
+/* Message */
+
+#message{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    font-size:14px;
+
+}
+
+
+
+/* Register */
+
+.register{
+
+    text-align:center;
+
+    margin-top:25px;
+
+    font-size:14px;
+
+}
+
+
+
+.register a{
+
+    color:#60a5fa;
+
+    text-decoration:none;
+
+}
+
+
+
+/* Mobile Responsive */
+
+@media(max-width:450px){
+
+
+.card{
+
+    width:90%;
+
+    padding:30px;
+
+}
+
+
+.card h1{
+
+    font-size:26px;
+
+}
+
+}
+
+.dashboard-card{
+
+text-align:center;
+
+}
+
+
+
+.dashboard-card h1{
+
+margin-bottom:20px;
+
+}
+
+
+
+.user-info{
+
+background:rgba(255,255,255,.1);
+
+padding:20px;
+
+border-radius:15px;
+
+margin-bottom:25px;
+
+}
+
+
+
+.user-info div{
+
+margin:15px;
+
+font-size:16px;
+
+}
+
+
+
+.user-info i{
+
+margin-right:10px;
+
+color:#60a5fa;
+
+}
